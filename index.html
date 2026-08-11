@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google AI Tools & Services Hub</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0b0f19 0%, #111827 50%, #0d1322 100%);
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(99, 102, 241, 0.5);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --accent-pink: #ec4899;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --glow-gradient: linear-gradient(90deg, #4f46e5, #9333ea, #ec4899);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #818cf8;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .badge-top span.pulse {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(180deg, #ffffff 0%, #9ca3af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+
+    p.subtitle {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Filter Controls */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .filter-btn.active {
+      background: var(--glow-gradient);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(147, 51, 234, 0.35);
+    }
+
+    /* Info Box */
+    .account-setup-box {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      backdrop-filter: blur(12px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .account-setup-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .setup-step {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid var(--accent-blue);
+      color: var(--accent-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .step-content p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Grid Layout */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Tool Card */
+    .tool-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(12px);
+    }
+
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--glow-gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--card-hover-border);
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.15);
+    }
+
+    .tool-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .tool-number {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.25rem 0.6rem;
+      border-radius: 0.5rem;
+    }
+
+    .tool-category {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 0.5rem;
+    }
+
+    .cat-dev { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+    .cat-app { background: rgba(139, 92, 246, 0.15); color: #c084fc; }
+    .cat-creative { background: rgba(236, 72, 153, 0.15); color: #f472b6; }
+    .cat-life { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+    .tool-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .active-badge {
+      font-size: 0.65rem;
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 0.1rem 0.4rem;
+      border-radius: 0.3rem;
+      vertical-align: middle;
+    }
+
+    .tool-desc {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .setup-tip {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 2px solid var(--accent-blue);
+      padding: 0.6rem 0.8rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      font-size: 0.8rem;
+      color: #d1d5db;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .link-url {
+      font-size: 0.8rem;
+      color: #6b7280;
+      font-family: monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 180px;
+    }
+
+    .btn-launch {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      padding: 0.45rem 1rem;
+      border-radius: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-launch:hover {
+      background: var(--glow-gradient);
+      border-color: transparent;
+      transform: scale(1.03);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge-top">
+        <span class="pulse"></span> Google AI Ecosystem Hub & Launcher
+      </div>
+      <h1>Google AI Tools Directory</h1>
+      <p class="subtitle">Complete list of next-generation Google AI tools, IDEs, web apps, and research assistants setup guide for your machine.</p>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCategory('all', this)">All (15)</button>
+        <button class="filter-btn" onclick="filterCategory('dev', this)">Developer & Coding (5)</button>
+        <button class="filter-btn" onclick="filterCategory('app', this)">App & UI Creation (3)</button>
+        <button class="filter-btn" onclick="filterCategory('creative', this)">Research & Creative (5)</button>
+        <button class="filter-btn" onclick="filterCategory('life', this)">Lifestyle & Study (2)</button>
+      </div>
+
+      <div class="account-setup-box">
+        <div class="setup-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Google Account Single Sign-On (SSO)</h3>
+            <p>All web-based tools (NotebookLM, AI Studio, Opal, Mixboard, Whisk, etc.) authenticate using your primary Google Account in your default browser. Click <strong>Launch App</strong> to sign in.</p>
+          </div>
+        </div>
+        <div class="setup-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>GitHub & Developer Integrations</h3>
+            <p>For developer tools (Jules, AntiGravity, Firebase Studio), connect your GitHub account when prompted to give AI agent access to your code repositories.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="tools-grid" id="toolsGrid">
+
+      <!-- 1. Jules -->
+      <div class="tool-card" data-category="dev">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">01</span>
+            <span class="tool-category cat-dev">Developer</span>
+          </div>
+          <div class="tool-name">Jules</div>
+          <p class="tool-desc">Autonomous AI agent that writes code, fixes bugs on its own, and seamlessly connects with GitHub repositories.</p>
+          <div class="setup-tip">🔐 <strong>Setup:</strong> Sign in with Google & grant GitHub OAuth access to sync your repos.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">jules.google</span>
+          <a href="https://jules.google" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+      <!-- 2. Google Opal -->
+      <div class="tool-card" data-category="app">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">02</span>
+            <span class="tool-category cat-app">App & UI</span>
+          </div>
+          <div class="tool-name">Google Opal</div>
+          <p class="tool-desc">Instant mini-app generator that converts simple natural language text prompts into interactive working applications.</p>
+          <div class="setup-tip">⚡ <strong>Setup:</strong> Web-based app creation engine. Sign in with Google Account.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">opal.google</span>
+          <a href="https://opal.google" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+      <!-- 3. Mixboard -->
+      <div class="tool-card" data-category="creative">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">03</span>
+            <span class="tool-category cat-creative">Research & Creative</span>
+          </div>
+          <div class="tool-name">Mixboard</div>
+          <p class="tool-desc">Infinite AI canvas for brainstorming, mood boards, conceptual visual mapping, and creative ideation.</p>
+          <div class="setup-tip">🎨 <strong>Setup:</strong> Google Labs experimental tool. Access with personal Google Account.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">labs.google/mixboard</span>
+          <a href="https://labs.google/mixboard" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+      <!-- 4. Google Pomelli -->
+      <div class="tool-card" data-category="creative">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">04</span>
+            <span class="tool-category cat-creative">Research & Creative</span>
+          </div>
+          <div class="tool-name">Google Pomelli</div>
+          <p class="tool-desc">Brand scanner & marketing suite that analyzes your brand identity and automatically crafts targeted social campaigns.</p>
+          <div class="setup-tip">📢 <strong>Setup:</strong> Google Labs project. Provide your website URL to scan brand assets.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">labs.google/pomelli</span>
+          <a href="https://labs.google.com/pomelli/about" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+      <!-- 5. AntiGravity -->
+      <div class="tool-card" data-category="dev">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">05</span>
+            <span class="tool-category cat-dev">Developer</span>
+          </div>
+          <div class="tool-name">AntiGravity <span class="active-badge">Active Machine</span></div>
+          <p class="tool-desc">Next-generation agentic AI coding environment built by Google DeepMind. Autonomous planning, coding, and debugging.</p>
+          <div class="setup-tip">✅ <strong>Status:</strong> Currently active & running on your machine right now!</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">antigravity.google</span>
+          <a href="https://antigravity.google" target="_blank" class="btn-launch">Launch Portal ↗</a>
+        </div>
+      </div>
+
+      <!-- 6. Stitch -->
+      <div class="tool-card" data-category="app">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">06</span>
+            <span class="tool-category cat-app">App & UI</span>
+          </div>
+          <div class="tool-name">Stitch</div>
+          <p class="tool-desc">Prompt-to-UI designer that generates high-fidelity interface designs and production-ready frontend code.</p>
+          <div class="setup-tip">📐 <strong>Setup:</strong> Sign in with Google Account to edit and export UI components.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">stitch.withgoogle.com</span>
+          <a href="https://stitch.withgoogle.com" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+      <!-- 7. Firebase Studio -->
+      <div class="tool-card" data-category="dev">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">07</span>
+            <span class="tool-category cat-dev">Developer</span>
+          </div>
+          <div class="tool-name">Firebase Studio</div>
+          <p class="tool-desc">Full-stack web application builder and cloud deployment platform powered by Gemini models and Firebase.</p>
+          <div class="setup-tip">🔥 <strong>Setup:</strong> Link Firebase Project & Google Cloud Console account.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">studio.firebase.google.com</span>
+          <a href="https://studio.firebase.google.com" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+      <!-- 8. Code Wiki -->
+      <div class="tool-card" data-category="dev">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">08</span>
+            <span class="tool-category cat-dev">Developer</span>
+          </div>
+          <div class="tool-name">Code Wiki</div>
+          <p class="tool-desc">Intelligent codebase indexer that converts complex repository architecture into searchable, interactive documentation.</p>
+          <div class="setup-tip">📚 <strong>Setup:</strong> Authenticate with GitHub/Google to index repositories.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">codewiki.google</span>
+          <a href="https://codewiki.google" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+      <!-- 9. Gemini Notebook / NotebookLM -->
+      <div class="tool-card" data-category="creative">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">09</span>
+            <span class="tool-category cat-creative">Research & Creative</span>
+          </div>
+          <div class="tool-name">NotebookLM (Gemini)</div>
+          <p class="tool-desc">Personal AI research assistant grounded in your own PDFs, Google Docs, slides, audio transcripts, and notes.</p>
+          <div class="setup-tip">🧠 <strong>Setup:</strong> Sign in with Google. Upload documents or sync Google Drive files.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">notebooklm.google</span>
+          <a href="https://notebooklm.google" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+      <!-- 10. Disco -->
+      <div class="tool-card" data-category="app">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">10</span>
+            <span class="tool-category cat-app">App & UI</span>
+          </div>
+          <div class="tool-name">Disco</div>
+          <p class="tool-desc">Smart browsing assistant that transforms your active open browser tabs into custom tailored AI applications.</p>
+          <div class="setup-tip">🌐 <strong>Setup:</strong> Google Labs project. Enable browser extension/app permissions.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">labs.google/disco</span>
+          <a href="https://labs.google/disco" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+      <!-- 11. Doppl -->
+      <div class="tool-card" data-category="life">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">11</span>
+            <span class="tool-category cat-life">Lifestyle</span>
+          </div>
+          <div class="tool-name">Doppl</div>
+          <p class="tool-desc">Virtual fitting room & outfit try-on app powered by visual AI—visualize clothing on yourself using a single photo.</p>
+          <div class="setup-tip">📱 <strong>Setup:</strong> Mobile App. Download via App Store (iOS) or Google Play Store (Android).</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">Mobile App (iOS / Android)</span>
+          <a href="https://play.google.com/store" target="_blank" class="btn-launch">Get App ↗</a>
+        </div>
+      </div>
+
+      <!-- 12. Learn Your Way -->
+      <div class="tool-card" data-category="life">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">12</span>
+            <span class="tool-category cat-life">Lifestyle & Study</span>
+          </div>
+          <div class="tool-name">Learn Your Way</div>
+          <p class="tool-desc">Personalized AI learning companion that converts course notes, textbooks, and PDFs into interactive study sessions.</p>
+          <div class="setup-tip">🎓 <strong>Setup:</strong> Web experience. Sign in with your student or personal Google Account.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">learnyourway.withgoogle.com</span>
+          <a href="https://learnyourway.withgoogle.com" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+      <!-- 13. Whisk -->
+      <div class="tool-card" data-category="creative">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">13</span>
+            <span class="tool-category cat-creative">Research & Creative</span>
+          </div>
+          <div class="tool-name">Whisk</div>
+          <p class="tool-desc">Generative visual studio that allows you to remix existing images, styles, and prompt directives into new AI artwork.</p>
+          <div class="setup-tip">🖼️ <strong>Setup:</strong> Google Labs visual suite. Sign in with Google.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">labs.google/whisk</span>
+          <a href="https://labs.google/whisk" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+      <!-- 14. Google AI Studio -->
+      <div class="tool-card" data-category="dev">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">14</span>
+            <span class="tool-category cat-dev">Developer</span>
+          </div>
+          <div class="tool-name">Google AI Studio</div>
+          <p class="tool-desc">Prototyping environment for testing Gemini 1.5 Pro/Flash models, prompt tuning, system instructions, and API keys.</p>
+          <div class="setup-tip">🔑 <strong>Setup:</strong> Sign in with Google Account & click <em>Get API key</em> for local code use.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">aistudio.google.com</span>
+          <a href="https://aistudio.google.com" target="_blank" class="btn-launch">Launch Studio ↗</a>
+        </div>
+      </div>
+
+      <!-- 15. Google Illuminate -->
+      <div class="tool-card" data-category="creative">
+        <div>
+          <div class="card-header">
+            <span class="tool-number">15</span>
+            <span class="tool-category cat-creative">Research & Creative</span>
+          </div>
+          <div class="tool-name">Google Illuminate</div>
+          <p class="tool-desc">Audio generator that converts complex academic research papers and technical docs into engaging spoken podcast conversations.</p>
+          <div class="setup-tip">🎧 <strong>Setup:</strong> Sign in with Google Account. Paste arXiv links or research PDFs.</div>
+        </div>
+        <div class="card-footer">
+          <span class="link-url">illuminate.google.com</span>
+          <a href="https://illuminate.google.com" target="_blank" class="btn-launch">Launch App ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <p>Google AI Ecosystem Hub &bull; Built with AntiGravity IDE on Windows &bull; All services authenticated via Google SSO</p>
+    </footer>
+  </div>
+
+  <script>
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.tool-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.dataset.category === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

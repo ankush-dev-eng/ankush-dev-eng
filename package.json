@@ -1,0 +1,20 @@
+{
+  "name": "mysterious-franklin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "inject_chrome_bookmarks.js",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve .",
+    "demo": "node gemini_demo.js",
+    "inject-bookmarks": "node inject_chrome_bookmarks.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^2.16.0"
+  }
+}
