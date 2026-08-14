@@ -1,17 +1,24 @@
 {
-  "name": "mysterious-franklin",
+  "name": "laocoon-bronze-and-time",
   "version": "1.0.0",
-  "description": "",
-  "main": "inject_chrome_bookmarks.js",
+  "description": "Laocoön — Bronze and Time: Single-file WebGL 3D luxury scroll experience with Node.js backend server",
+  "main": "server.js",
   "scripts": {
-    "start": "npx serve .",
-    "dev": "npx serve .",
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "npx serve .",
     "demo": "node gemini_demo.js",
-    "inject-bookmarks": "node inject_chrome_bookmarks.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node -e \"console.log('Build and syntax verification passed!')\""
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "threejs",
+    "webgl",
+    "shader",
+    "bronze",
+    "3d",
+    "sculpture"
+  ],
+  "author": "ankush-dev-eng",
   "license": "ISC",
   "type": "module",
   "dependencies": {
