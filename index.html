@@ -1,663 +1,849 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google AI Tools & Services Hub</title>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-gradient: linear-gradient(135deg, #0b0f19 0%, #111827 50%, #0d1322 100%);
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --card-hover-border: rgba(99, 102, 241, 0.5);
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --accent-blue: #3b82f6;
-      --accent-purple: #8b5cf6;
-      --accent-pink: #ec4899;
-      --accent-emerald: #10b981;
-      --accent-amber: #f59e0b;
-      --glow-gradient: linear-gradient(90deg, #4f46e5, #9333ea, #ec4899);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Statue of Laocoön</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@1,500&display=swap');
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
 
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-main);
-      min-height: 100vh;
-      padding: 2rem 1.5rem;
-      line-height: 1.6;
-    }
+        html, body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-    }
+        body {
+            min-height: 900vh;
+            font-family: 'Outfit', sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+            cursor: none;
+        }
 
-    /* Header */
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-      position: relative;
-    }
+        * { cursor: none !important; }
 
-    .badge-top {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1rem;
-      background: rgba(99, 102, 241, 0.15);
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      border-radius: 9999px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #818cf8;
-      margin-bottom: 1rem;
-      backdrop-filter: blur(8px);
-    }
+        ::-webkit-scrollbar { display: none; width: 0; }
 
-    .badge-top span.pulse {
-      width: 8px;
-      height: 8px;
-      background-color: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #10b981;
-      animation: pulse 2s infinite;
-    }
+        #webgl {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+            outline: none;
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-    }
+        .cursor-inner {
+            position: fixed; top: 0; left: 0;
+            width: 6px; height: 6px;
+            border: 2px solid rgba(255, 255, 255, 1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .cursor-outer {
+            position: fixed; top: 0; left: 0;
+            width: 40px; height: 40px;
+            border: 1.5px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9998;
+            transition: width 0.3s, height 0.3s, background 0.3s;
+        }
 
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      background: linear-gradient(180deg, #ffffff 0%, #9ca3af 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.75rem;
-    }
+        .cinematic-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 10;
+            pointer-events: none;          /* clicks pass through to canvas */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0 60px 40px 60px;
+            box-sizing: border-box;
+        }
 
-    p.subtitle {
-      font-size: 1.125rem;
-      color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto 2rem;
-    }
+        .main-header {
+            display: flex; justify-content: space-between; align-items: center;
+            width: 100%; z-index: 20;
+            pointer-events: auto;
+            padding: 20px 0;
+        }
+        .brand { font-size: 14px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; }
+        .header-nav { display: flex; align-items: center; gap: 24px; }
+        .nav-link {
+            color: #ffffff; text-decoration: none;
+            font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+            font-weight: 500; transition: color 0.3s;
+        }
+        .nav-link:hover { color: #ffffff; }
+        .nav-dot { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; }
+        .contact-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 24px;
+            background: #ffffff; color: #000000;
+            text-decoration: none;
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
+            border-radius: 20px;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .btn-circle {
+            display: inline-block; width: 6px; height: 6px;
+            border: 1px solid #000000; border-radius: 50%; background: transparent;
+        }
+        .contact-btn:hover { transform: scale(1.05); background: #f0f0f0; }
 
-    /* Filter Controls */
-    .filter-bar {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
+        .slide { position: absolute; bottom: 12%; pointer-events: none; }
 
-    .filter-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 0.5rem 1.25rem;
-      border-radius: 9999px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
+        #slide-1 { left: 0; width: 100%; }
+        #slide-1 .slide-title { margin-left: 60px; }
+        #slide-1 .desc-row { position: relative; display: flex; width: 100%; }
+        #slide-1 .col-1 {
+            margin-left: 60px;
+            width: calc(25vw - 60px);
+            max-width: calc(25vw - 60px);
+        }
+        #slide-1 .col-2 {
+            position: absolute;
+            left: calc(25vw + 40px);
+            width: calc(25vw - 60px);
+            max-width: calc(25vw - 60px);
+        }
 
-    .filter-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-    }
+        #slide-2 { left: 0; width: 100%; }
+        #slide-2-img {
+            position: fixed;
+            top: 90px;
+            left: 60px;
+            width: calc(25vw - 60px);
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            z-index: 2;
+            pointer-events: none;
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+            opacity: 0;
+        }
+        #slide-2-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transform: scale(1.15);
+            transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #slide-2-img.active { clip-path: inset(0 0 0 0); opacity: 1; }
+        #slide-2-img.active img { transform: scale(1); }
 
-    .filter-btn.active {
-      background: var(--glow-gradient);
-      color: #fff;
-      border-color: transparent;
-      box-shadow: 0 4px 20px rgba(147, 51, 234, 0.35);
-    }
+        #slide-2 .slide-title { margin-left: calc(25vw + 40px); }
+        #slide-2 .slide-desc {
+            margin-left: calc(50vw + 20px);
+            width: calc(25vw - 60px);
+            max-width: calc(25vw - 60px);
+        }
 
-    /* Info Box */
-    .account-setup-box {
-      background: rgba(17, 24, 39, 0.7);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      margin-bottom: 3rem;
-      backdrop-filter: blur(12px);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
+        #slide-3 {
+            left: calc(50vw + 20px);
+            width: calc(25vw - 60px);
+            max-width: calc(25vw - 60px);
+        }
+        #slide-3 .slide-title { white-space: nowrap; }
 
-    @media (max-width: 768px) {
-      .account-setup-box {
-        grid-template-columns: 1fr;
+        #slide-4 { left: calc(25% + 40px); max-width: 600px; }
+
+        .slide-title {
+            font-family: 'Italiana', serif;
+            font-size: 116px;
+            line-height: 1.0;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #fff6ed;
+        }
+        .slide-desc {
+            font-size: 16px; line-height: 1.7; font-weight: 300;
+            color: #d1d5db; letter-spacing: 0.5px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            transition-delay: 0.4s;
+        }
+        .slide.active .slide-desc { opacity: 1; transform: translateY(0); }
+
+        .slide-title .char {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(50px);
+            filter: blur(12px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                        filter 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .slide.active .slide-title .char { opacity: 1; transform: translateY(0); filter: blur(0); }
+        .slide.active { pointer-events: auto; }
+
+        .story-dashes {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .story-dash { width: 2px; height: 40px; background: rgba(255, 255, 255, 0.15); border-radius: 2px; }
+        .story-dash-fill { width: 100%; height: 0%; background: #ffffff; border-radius: 2px; }
+
+        .grid-horizontal-line {
+            position: fixed; top: 70px; left: 0; right: 0;
+            width: 100%; height: 1px;
+            background: rgba(255, 255, 255, 0.12);
+            z-index: 5; pointer-events: none;
+        }
+        .grid-lines {
+            position: fixed; top: 0; left: 40px; right: 40px;
+            width: calc(100% - 80px); height: 100vh;
+            display: flex; justify-content: space-between;
+            z-index: 5; pointer-events: none;
+        }
+        .grid-line {
+            position: relative; width: 1px; height: 100%;
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .grid-line:nth-child(3) { margin-top: 70px; height: calc(100vh - 70px); }
+        .grid-dot {
+            position: absolute; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px; height: 6px; border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.15);
+        }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/examples/jsm/loaders/GLTFLoader.js": "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js"
       }
     }
-
-    .setup-step {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-
-    .step-number {
-      width: 32px;
-      height: 32px;
-      background: rgba(59, 130, 246, 0.2);
-      border: 1px solid var(--accent-blue);
-      color: var(--accent-blue);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .step-content h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.25rem;
-    }
-
-    .step-content p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-    }
-
-    /* Grid Layout */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 1.5rem;
-    }
-
-    /* Tool Card */
-    .tool-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 1.25rem;
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      backdrop-filter: blur(12px);
-    }
-
-    .tool-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--glow-gradient);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--card-hover-border);
-      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.15);
-    }
-
-    .tool-card:hover::before {
-      opacity: 1;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-    }
-
-    .tool-number {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 0.25rem 0.6rem;
-      border-radius: 0.5rem;
-    }
-
-    .tool-category {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.25rem 0.6rem;
-      border-radius: 0.5rem;
-    }
-
-    .cat-dev { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
-    .cat-app { background: rgba(139, 92, 246, 0.15); color: #c084fc; }
-    .cat-creative { background: rgba(236, 72, 153, 0.15); color: #f472b6; }
-    .cat-life { background: rgba(16, 185, 129, 0.15); color: #34d399; }
-
-    .tool-name {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .active-badge {
-      font-size: 0.65rem;
-      background: rgba(16, 185, 129, 0.2);
-      color: #10b981;
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      padding: 0.1rem 0.4rem;
-      border-radius: 0.3rem;
-      vertical-align: middle;
-    }
-
-    .tool-desc {
-      font-size: 0.925rem;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-    }
-
-    .setup-tip {
-      background: rgba(255, 255, 255, 0.02);
-      border-left: 2px solid var(--accent-blue);
-      padding: 0.6rem 0.8rem;
-      border-radius: 0 0.5rem 0.5rem 0;
-      font-size: 0.8rem;
-      color: #d1d5db;
-      margin-bottom: 1.25rem;
-    }
-
-    .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: auto;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .link-url {
-      font-size: 0.8rem;
-      color: #6b7280;
-      font-family: monospace;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 180px;
-    }
-
-    .btn-launch {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff;
-      padding: 0.45rem 1rem;
-      border-radius: 0.6rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-launch:hover {
-      background: var(--glow-gradient);
-      border-color: transparent;
-      transform: scale(1.03);
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--card-border);
-      color: var(--text-muted);
-      font-size: 0.875rem;
-    }
-  </style>
+    </script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="badge-top">
-        <span class="pulse"></span> Google AI Ecosystem Hub & Launcher
-      </div>
-      <h1>Google AI Tools Directory</h1>
-      <p class="subtitle">Complete list of next-generation Google AI tools, IDEs, web apps, and research assistants setup guide for your machine.</p>
+    <div class="cursor-inner"></div>
+    <div class="cursor-outer"></div>
 
-      <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterCategory('all', this)">All (15)</button>
-        <button class="filter-btn" onclick="filterCategory('dev', this)">Developer & Coding (5)</button>
-        <button class="filter-btn" onclick="filterCategory('app', this)">App & UI Creation (3)</button>
-        <button class="filter-btn" onclick="filterCategory('creative', this)">Research & Creative (5)</button>
-        <button class="filter-btn" onclick="filterCategory('life', this)">Lifestyle & Study (2)</button>
-      </div>
+    <div class="cinematic-container">
+        <div class="main-header">
+            <div class="brand">Laocoön</div>
+            <nav class="header-nav">
+                <a href="#slide-1" class="nav-link">Bronze</a>
+                <span class="nav-dot"></span>
+                <a href="#slide-2" class="nav-link">Marble</a>
+                <span class="nav-dot"></span>
+                <a href="#slide-3" class="nav-link">Fluid</a>
+                <span class="nav-dot"></span>
+                <a href="#slide-4" class="nav-link">Digital</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="contact-btn">Contact <span class="btn-circle"></span></a>
+            </div>
+        </div>
 
-      <div class="account-setup-box">
-        <div class="setup-step">
-          <div class="step-number">1</div>
-          <div class="step-content">
-            <h3>Google Account Single Sign-On (SSO)</h3>
-            <p>All web-based tools (NotebookLM, AI Studio, Opal, Mixboard, Whisk, etc.) authenticate using your primary Google Account in your default browser. Click <strong>Launch App</strong> to sign in.</p>
-          </div>
+        <div class="slide" id="slide-1">
+            <h2 class="slide-title">Bronze <br>and Time</h2>
+            <div class="desc-row">
+                <p class="slide-desc col-1">A timeless material holding centuries of human history. Fluid in hot flames, eternal in its form. Each curve captures a tense, dramatic moment.</p>
+                <p class="slide-desc col-2">Born of molten fire and creative will, it stands to bridge our ancient memory and modern vision. A fluid energy frozen in still, heavy bronze.</p>
+            </div>
         </div>
-        <div class="setup-step">
-          <div class="step-number">2</div>
-          <div class="step-content">
-            <h3>GitHub & Developer Integrations</h3>
-            <p>For developer tools (Jules, AntiGravity, Firebase Studio), connect your GitHub account when prompted to give AI agent access to your code repositories.</p>
-          </div>
-        </div>
-      </div>
-    </header>
 
-    <div class="tools-grid" id="toolsGrid">
+        <div class="slide-image-mask" id="slide-2-img">
+            <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/laocoon-59f84455c6/1.png" alt="Editorial Concept">
+        </div>
 
-      <!-- 1. Jules -->
-      <div class="tool-card" data-category="dev">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">01</span>
-            <span class="tool-category cat-dev">Developer</span>
-          </div>
-          <div class="tool-name">Jules</div>
-          <p class="tool-desc">Autonomous AI agent that writes code, fixes bugs on its own, and seamlessly connects with GitHub repositories.</p>
-          <div class="setup-tip">🔐 <strong>Setup:</strong> Sign in with Google & grant GitHub OAuth access to sync your repos.</div>
+        <div class="slide" id="slide-2">
+            <h2 class="slide-title">Marble <br>Emotion</h2>
+            <p class="slide-desc">A sculpture frozen at the peak of human suffering and heroic struggle. Laocoön and his sons, bound by ruthless fate.</p>
         </div>
-        <div class="card-footer">
-          <span class="link-url">jules.google</span>
-          <a href="https://jules.google" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
 
-      <!-- 2. Google Opal -->
-      <div class="tool-card" data-category="app">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">02</span>
-            <span class="tool-category cat-app">App & UI</span>
-          </div>
-          <div class="tool-name">Google Opal</div>
-          <p class="tool-desc">Instant mini-app generator that converts simple natural language text prompts into interactive working applications.</p>
-          <div class="setup-tip">⚡ <strong>Setup:</strong> Web-based app creation engine. Sign in with Google Account.</div>
+        <div class="slide" id="slide-3">
+            <h2 class="slide-title">Liquid Metal</h2>
+            <p class="slide-desc">Art that breathes. Mesmerizing waves of liquid bronze flow through space, reflecting every contour and tensed muscle of the ancient masterpiece.</p>
         </div>
-        <div class="card-footer">
-          <span class="link-url">opal.google</span>
-          <a href="https://opal.google" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
 
-      <!-- 3. Mixboard -->
-      <div class="tool-card" data-category="creative">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">03</span>
-            <span class="tool-category cat-creative">Research & Creative</span>
-          </div>
-          <div class="tool-name">Mixboard</div>
-          <p class="tool-desc">Infinite AI canvas for brainstorming, mood boards, conceptual visual mapping, and creative ideation.</p>
-          <div class="setup-tip">🎨 <strong>Setup:</strong> Google Labs experimental tool. Access with personal Google Account.</div>
+        <div class="slide" id="slide-4">
+            <h2 class="slide-title">Eternal <br>Moment</h2>
+            <p class="slide-desc">Contemplating antique form through the lens of new dimensions. A classic masterpiece reborn in the currents of radiant digital matter.</p>
         </div>
-        <div class="card-footer">
-          <span class="link-url">labs.google/mixboard</span>
-          <a href="https://labs.google/mixboard" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
-
-      <!-- 4. Google Pomelli -->
-      <div class="tool-card" data-category="creative">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">04</span>
-            <span class="tool-category cat-creative">Research & Creative</span>
-          </div>
-          <div class="tool-name">Google Pomelli</div>
-          <p class="tool-desc">Brand scanner & marketing suite that analyzes your brand identity and automatically crafts targeted social campaigns.</p>
-          <div class="setup-tip">📢 <strong>Setup:</strong> Google Labs project. Provide your website URL to scan brand assets.</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">labs.google/pomelli</span>
-          <a href="https://labs.google.com/pomelli/about" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
-
-      <!-- 5. AntiGravity -->
-      <div class="tool-card" data-category="dev">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">05</span>
-            <span class="tool-category cat-dev">Developer</span>
-          </div>
-          <div class="tool-name">AntiGravity <span class="active-badge">Active Machine</span></div>
-          <p class="tool-desc">Next-generation agentic AI coding environment built by Google DeepMind. Autonomous planning, coding, and debugging.</p>
-          <div class="setup-tip">✅ <strong>Status:</strong> Currently active & running on your machine right now!</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">antigravity.google</span>
-          <a href="https://antigravity.google" target="_blank" class="btn-launch">Launch Portal ↗</a>
-        </div>
-      </div>
-
-      <!-- 6. Stitch -->
-      <div class="tool-card" data-category="app">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">06</span>
-            <span class="tool-category cat-app">App & UI</span>
-          </div>
-          <div class="tool-name">Stitch</div>
-          <p class="tool-desc">Prompt-to-UI designer that generates high-fidelity interface designs and production-ready frontend code.</p>
-          <div class="setup-tip">📐 <strong>Setup:</strong> Sign in with Google Account to edit and export UI components.</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">stitch.withgoogle.com</span>
-          <a href="https://stitch.withgoogle.com" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
-
-      <!-- 7. Firebase Studio -->
-      <div class="tool-card" data-category="dev">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">07</span>
-            <span class="tool-category cat-dev">Developer</span>
-          </div>
-          <div class="tool-name">Firebase Studio</div>
-          <p class="tool-desc">Full-stack web application builder and cloud deployment platform powered by Gemini models and Firebase.</p>
-          <div class="setup-tip">🔥 <strong>Setup:</strong> Link Firebase Project & Google Cloud Console account.</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">studio.firebase.google.com</span>
-          <a href="https://studio.firebase.google.com" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
-
-      <!-- 8. Code Wiki -->
-      <div class="tool-card" data-category="dev">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">08</span>
-            <span class="tool-category cat-dev">Developer</span>
-          </div>
-          <div class="tool-name">Code Wiki</div>
-          <p class="tool-desc">Intelligent codebase indexer that converts complex repository architecture into searchable, interactive documentation.</p>
-          <div class="setup-tip">📚 <strong>Setup:</strong> Authenticate with GitHub/Google to index repositories.</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">codewiki.google</span>
-          <a href="https://codewiki.google" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
-
-      <!-- 9. Gemini Notebook / NotebookLM -->
-      <div class="tool-card" data-category="creative">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">09</span>
-            <span class="tool-category cat-creative">Research & Creative</span>
-          </div>
-          <div class="tool-name">NotebookLM (Gemini)</div>
-          <p class="tool-desc">Personal AI research assistant grounded in your own PDFs, Google Docs, slides, audio transcripts, and notes.</p>
-          <div class="setup-tip">🧠 <strong>Setup:</strong> Sign in with Google. Upload documents or sync Google Drive files.</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">notebooklm.google</span>
-          <a href="https://notebooklm.google" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
-
-      <!-- 10. Disco -->
-      <div class="tool-card" data-category="app">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">10</span>
-            <span class="tool-category cat-app">App & UI</span>
-          </div>
-          <div class="tool-name">Disco</div>
-          <p class="tool-desc">Smart browsing assistant that transforms your active open browser tabs into custom tailored AI applications.</p>
-          <div class="setup-tip">🌐 <strong>Setup:</strong> Google Labs project. Enable browser extension/app permissions.</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">labs.google/disco</span>
-          <a href="https://labs.google/disco" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
-
-      <!-- 11. Doppl -->
-      <div class="tool-card" data-category="life">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">11</span>
-            <span class="tool-category cat-life">Lifestyle</span>
-          </div>
-          <div class="tool-name">Doppl</div>
-          <p class="tool-desc">Virtual fitting room & outfit try-on app powered by visual AI—visualize clothing on yourself using a single photo.</p>
-          <div class="setup-tip">📱 <strong>Setup:</strong> Mobile App. Download via App Store (iOS) or Google Play Store (Android).</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">Mobile App (iOS / Android)</span>
-          <a href="https://play.google.com/store" target="_blank" class="btn-launch">Get App ↗</a>
-        </div>
-      </div>
-
-      <!-- 12. Learn Your Way -->
-      <div class="tool-card" data-category="life">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">12</span>
-            <span class="tool-category cat-life">Lifestyle & Study</span>
-          </div>
-          <div class="tool-name">Learn Your Way</div>
-          <p class="tool-desc">Personalized AI learning companion that converts course notes, textbooks, and PDFs into interactive study sessions.</p>
-          <div class="setup-tip">🎓 <strong>Setup:</strong> Web experience. Sign in with your student or personal Google Account.</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">learnyourway.withgoogle.com</span>
-          <a href="https://learnyourway.withgoogle.com" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
-
-      <!-- 13. Whisk -->
-      <div class="tool-card" data-category="creative">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">13</span>
-            <span class="tool-category cat-creative">Research & Creative</span>
-          </div>
-          <div class="tool-name">Whisk</div>
-          <p class="tool-desc">Generative visual studio that allows you to remix existing images, styles, and prompt directives into new AI artwork.</p>
-          <div class="setup-tip">🖼️ <strong>Setup:</strong> Google Labs visual suite. Sign in with Google.</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">labs.google/whisk</span>
-          <a href="https://labs.google/whisk" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
-
-      <!-- 14. Google AI Studio -->
-      <div class="tool-card" data-category="dev">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">14</span>
-            <span class="tool-category cat-dev">Developer</span>
-          </div>
-          <div class="tool-name">Google AI Studio</div>
-          <p class="tool-desc">Prototyping environment for testing Gemini 1.5 Pro/Flash models, prompt tuning, system instructions, and API keys.</p>
-          <div class="setup-tip">🔑 <strong>Setup:</strong> Sign in with Google Account & click <em>Get API key</em> for local code use.</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">aistudio.google.com</span>
-          <a href="https://aistudio.google.com" target="_blank" class="btn-launch">Launch Studio ↗</a>
-        </div>
-      </div>
-
-      <!-- 15. Google Illuminate -->
-      <div class="tool-card" data-category="creative">
-        <div>
-          <div class="card-header">
-            <span class="tool-number">15</span>
-            <span class="tool-category cat-creative">Research & Creative</span>
-          </div>
-          <div class="tool-name">Google Illuminate</div>
-          <p class="tool-desc">Audio generator that converts complex academic research papers and technical docs into engaging spoken podcast conversations.</p>
-          <div class="setup-tip">🎧 <strong>Setup:</strong> Sign in with Google Account. Paste arXiv links or research PDFs.</div>
-        </div>
-        <div class="card-footer">
-          <span class="link-url">illuminate.google.com</span>
-          <a href="https://illuminate.google.com" target="_blank" class="btn-launch">Launch App ↗</a>
-        </div>
-      </div>
-
     </div>
 
-    <footer>
-      <p>Google AI Ecosystem Hub &bull; Built with AntiGravity IDE on Windows &bull; All services authenticated via Google SSO</p>
-    </footer>
-  </div>
+    <div class="grid-horizontal-line"></div>
+    <div class="grid-lines">
+        <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+        <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+        <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+        <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+        <div class="grid-line story-progress-container">
+            <div class="grid-dot top"></div>
+            <div class="grid-dot bottom"></div>
+            <div class="story-dashes">
+                <div class="story-dash"><div class="story-dash-fill" id="dash-fill-1"></div></div>
+                <div class="story-dash"><div class="story-dash-fill" id="dash-fill-2"></div></div>
+                <div class="story-dash"><div class="story-dash-fill" id="dash-fill-3"></div></div>
+                <div class="story-dash"><div class="story-dash-fill" id="dash-fill-4"></div></div>
+            </div>
+        </div>
+    </div>
 
-  <script>
-    function filterCategory(cat, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    <canvas id="webgl"></canvas>
 
-      const cards = document.querySelectorAll('.tool-card');
-      cards.forEach(card => {
-        if (cat === 'all' || card.dataset.category === cat) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
+    <script type="module">
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+        const ASSET_BASE_URL = "https://api.getlayers.ai/storage/v1/object/public/public/assets/laocoon-59f84455c6";
+
+        const canvas = document.querySelector('#webgl');
+        let scene, camera, renderer;
+        let gltfModel;     // the statue
+        let modelPivot;    // pivot group for perfect center-rotation
+        let mixer;
+        const clock = new THREE.Clock();
+        let currentScroll = 0;   // smoothed accumulated scroll for lerping
+
+        let mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+
+        let cursorX = window.innerWidth / 2,  cursorY = window.innerHeight / 2;
+        let outerCursorX = window.innerWidth / 2, outerCursorY = window.innerHeight / 2;
+
+        let bgMaterial;
+        const shaderUniforms = {
+            uTime: { value: 0 },
+            uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+            uMouse: { value: new THREE.Vector2(0, 0) },
+            uScroll: { value: 0 }
+        };
+
+        let sparkParticles;
+        const sparkCount = 450;
+        const sparkData = [];
+
+        const sizes = { width: window.innerWidth, height: window.innerHeight };
+
+        function createSparkTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 16; canvas.height = 16;
+            const ctx = canvas.getContext('2d');
+            const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+            gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+            gradient.addColorStop(0.25, 'rgba(255, 255, 255, 0.85)');
+            gradient.addColorStop(0.6, 'rgba(255, 255, 255, 0.3)');
+            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 16, 16);
+            return new THREE.CanvasTexture(canvas);
         }
-      });
-    }
-  </script>
+
+        function createSparks() {
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(sparkCount * 3);
+            const colors = new Float32Array(sparkCount * 3);
+
+            for (let i = 0; i < sparkCount; i++) {
+                const x = (Math.random() - 0.5) * 6.5;
+                const y = (Math.random() - 0.5) * 5.0 - 0.5;
+                const z = (Math.random() - 0.5) * 6.5;
+                positions[i * 3] = x;
+                positions[i * 3 + 1] = y;
+                positions[i * 3 + 2] = z;
+
+                if (Math.random() < 0.6) {
+                    // saturated fiery orange
+                    colors[i * 3] = 1.0;
+                    colors[i * 3 + 1] = 0.4 + Math.random() * 0.15;
+                    colors[i * 3 + 2] = 0.05 + Math.random() * 0.1;
+                } else {
+                    // cosmic icy light-blue (matches rim light)
+                    colors[i * 3] = 0.55 + Math.random() * 0.15;
+                    colors[i * 3 + 1] = 0.82 + Math.random() * 0.12;
+                    colors[i * 3 + 2] = 1.0;
+                }
+
+                sparkData.push({
+                    speedX: (Math.random() - 0.5) * 0.4,
+                    speedY: 0.15 + Math.random() * 0.3,
+                    speedZ: (Math.random() - 0.5) * 0.4,
+                    swaySpeed: 0.5 + Math.random() * 1.5,
+                    swayRadius: 0.05 + Math.random() * 0.15,
+                    phase: Math.random() * Math.PI * 2
+                });
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({
+                size: 0.025,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.85,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                map: createSparkTexture()
+            });
+
+            sparkParticles = new THREE.Points(geometry, material);
+            scene.add(sparkParticles);
+        }
+
+        function createBackgroundShader() {
+            const vertexShader = `
+                varying vec2 vUv;
+                void main() {
+                    vUv = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }
+            `;
+
+            const fragmentShader = `
+                varying vec2 vUv;
+                uniform float uTime;
+                uniform vec2 uResolution;
+                uniform vec2 uMouse;
+                uniform float uScroll;
+
+                // 3D Noise function for organic warping (high performance hash-based noise)
+                float hash(float n) { return fract(sin(n) * 43758.5453123); }
+                float noise(in vec3 x) {
+                    vec3 p = floor(x);
+                    vec3 f = fract(x);
+                    f = f*f*(3.0-2.0*f);
+                    float n = p.x + p.y*57.0 + 113.0*p.z;
+                    return mix(mix(mix(hash(n+  0.0), hash(n+  1.0), f.x),
+                                   mix(hash(n+ 57.0), hash(n+ 58.0), f.x), f.y),
+                               mix(mix(hash(n+113.0), hash(n+114.0), f.x),
+                                   mix(hash(n+170.0), hash(n+171.0), f.x), f.y), f.z);
+                }
+
+                void main() {
+                    // Normalize UV coordinates
+                    vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / uResolution.y;
+                    float aspect = uResolution.x / uResolution.y;
+                    
+                    float time = uTime * 0.08; // Extremely slow, calm breathing speed
+                    float scroll = uScroll;
+                    
+                    // --- 1. Constant Wave Parameters (Perfect Scroll Stability) ---
+                    // Keep frequencies and angles constant to prevent compressing/speeding waves on scroll
+                    float angle1 = 0.6;
+                    float angle2 = -0.7;
+                    float angle3 = 1.2;
+                    
+                    float freq1 = 2.4;  // Higher frequency = significantly more lines on screen
+                    float freq2 = 3.2;
+                    float freq3 = 4.0;
+                    
+                    // --- 2. Coordinates Distortion (Smooth Rounded Arcs & Scroll Deformation) ---
+                    vec2 warpedUv = uv;
+                    
+                    // Scroll directly drives the deformation of the wave shapes!
+                    // As you scroll, the phase of the distortion shifts, smoothly bending the rounded lines.
+                    float scrollDeform = scroll * 5.0; // 5 radians of smooth sweeping deformation
+                    
+                    // Large scale, perfectly smooth sine-wave distortions for clean, even, rounded arcs
+                    warpedUv.x += sin(uv.y * 2.5 + time * 0.2 + scrollDeform) * 0.35;
+                    warpedUv.y += cos(uv.x * 2.5 - time * 0.15 - scrollDeform * 0.8) * 0.35;
+                    
+                    // Secondary clean curve to create elegant, topographical intersections
+                    warpedUv.x += sin(uv.y * 1.2 - time * 0.1 - scrollDeform * 1.5) * 0.25;
+                    warpedUv.y += cos(uv.x * 1.2 + time * 0.18 + scrollDeform * 1.2) * 0.25;
+                    
+                    // Soft global sliding shift based on scroll parallax and mouse movement
+                    // Keep drift multipliers tiny so scroll motion remains extremely gentle
+                    vec2 scrollDrift = vec2(scroll * 0.04, -scroll * 0.02);
+                    vec2 mouseShift = vec2(uMouse.x * aspect * 0.05, uMouse.y * 0.05);
+                    warpedUv += scrollDrift + mouseShift;
+                    
+                    // --- 3. Layered Wave Computations ---
+                    // Wave directions
+                    vec2 dir1 = vec2(cos(angle1), sin(angle1));
+                    vec2 dir2 = vec2(cos(angle2), sin(angle2));
+                    vec2 dir3 = vec2(cos(angle3), sin(angle3));
+                    
+                    // Layered sine wave calculations with self-warping
+                    float w1 = sin(dot(warpedUv, dir1) * freq1 + time * 1.0);
+                    float w2 = cos(dot(warpedUv, dir2) * freq2 - time * 1.4 + w1 * 0.4);
+                    float w3 = sin(dot(warpedUv, dir3) * freq3 + time * 1.8 + w2 * 0.5);
+                    
+                    // Combine layers into a seamless wave scalar field in [-1.0, 1.0]
+                    float waveField = w1 * 0.50 + w2 * 0.35 + w3 * 0.15;
+                    
+                    // --- 4. Crisp Metallic Lustre ---
+                    // Wide satin sheen (gives defined body to the folds without haze)
+                    float wideSheen = pow(max(0.0, 1.0 - abs(waveField - 0.1)), 2.5);
+                    
+                    // Crisp, thicker specular reflection (defined metallic shine, ensuring thickness with more lines)
+                    float crispSpecular = pow(max(0.0, 1.0 - abs(waveField - 0.15)), 8.0);
+                    
+                    // Highlight blend: crisp, defined glowing folds
+                    float crest = wideSheen * 0.5 + crispSpecular * 0.9;
+                    
+                    // --- 5. Scroll-Driven Color Palettes: Pure Bronze to Pure Blue ---
+                    // Top Palette (Scroll = 0.0): Rich Molten Bronze
+                    vec3 c0_shadow = vec3(0.0010, 0.0006, 0.0004); // Deepest bronze shadow
+                    vec3 c0_wave1  = vec3(0.085, 0.040, 0.015);    // Rich copper-bronze
+                    vec3 c0_wave2  = vec3(0.050, 0.022, 0.008);    // Deep bronze body
+                    vec3 c0_crest  = vec3(0.45, 0.30, 0.18);       // Polished bronze/gold sheen
+                    
+                    // Bottom Palette (Scroll = 1.0): Deep Sapphire Blue
+                    vec3 c1_shadow = vec3(0.0004, 0.0006, 0.0012); // Deepest sapphire shadow
+                    vec3 c1_wave1  = vec3(0.015, 0.035, 0.065);    // Rich cobalt/teal blue
+                    vec3 c1_wave2  = vec3(0.008, 0.020, 0.045);    // Deep sapphire body
+                    vec3 c1_crest  = vec3(0.18, 0.35, 0.55);       // Polished blue-steel sheen
+                    
+                    // Interpolate colors smoothly based on scroll progress
+                    float t = smoothstep(0.0, 1.0, scroll);
+                    vec3 colShadow = mix(c0_shadow, c1_shadow, t);
+                    vec3 colWave1  = mix(c0_wave1, c1_wave1, t);
+                    vec3 colWave2  = mix(c0_wave2, c1_wave2, t);
+                    vec3 colCrest  = mix(c0_crest, c1_crest, t);
+                    
+                    // --- 6. Final Composition ---
+                    // Blend wave details and wave bodies with deep shadow background
+                    vec3 color = colShadow;
+                    color = mix(color, colWave2, smoothstep(-0.6, 0.2, waveField));
+                    color = mix(color, colWave1, smoothstep(0.0, 0.8, waveField));
+                    
+                    // Add the soft satinated crest highlights with rich metallic multiplier
+                    color += colCrest * crest * 1.4;
+                    
+                    // Apply a gentle vignette to match cinematic design
+                    float vignette = 1.0 - dot(uv, uv) * 0.12;
+                    color *= vignette;
+                    
+                    gl_FragColor = vec4(color, 1.0);
+                }
+            `;
+
+            bgMaterial = new THREE.ShaderMaterial({
+                vertexShader: vertexShader,
+                fragmentShader: fragmentShader,
+                uniforms: shaderUniforms,
+                depthWrite: false,
+                depthTest: false
+            });
+
+            const bgGeometry = new THREE.PlaneGeometry(30, 30);
+            const bgMesh = new THREE.Mesh(bgGeometry, bgMaterial);
+            bgMesh.position.set(0.0, 0.0, -8.0);   // local camera space, far behind
+            bgMesh.renderOrder = -10;
+            camera.add(bgMesh);                    // attach to camera so it always fills view
+        }
+
+        function loadModel() {
+            const loader = new GLTFLoader();
+            loader.load(
+                ASSET_BASE_URL + '/bronze_horse.glb',
+                (gltf) => {
+                    gltfModel = gltf.scene;
+
+                    modelPivot = new THREE.Group();
+                    scene.add(modelPivot);
+                    modelPivot.add(gltfModel);
+
+                    gltfModel.traverse((child) => {
+                        if (child.isMesh) {
+                            child.castShadow = true;
+                            child.receiveShadow = true;
+                            if (child.material) {
+                                child.material.roughness = 0.42;   // semi-matte, noble highlights
+                                child.material.metalness = 0.92;   // high satin-bronze metallic sheen
+                                child.material.flatShading = false;
+                                if (child.material.map) {
+                                    child.material.map.anisotropy = 16;
+                                }
+                            }
+                        }
+                    });
+
+                    if (gltf.animations && gltf.animations.length > 0) {
+                        mixer = new THREE.AnimationMixer(gltfModel);
+                        gltf.animations.forEach((clip) => { mixer.clipAction(clip).play(); });
+                    }
+
+                    // 1. scale so max dimension = 3.5
+                    const boxInitial = new THREE.Box3().setFromObject(gltfModel);
+                    const sizeInitial = boxInitial.getSize(new THREE.Vector3());
+                    const maxDim = Math.max(sizeInitial.x, sizeInitial.y, sizeInitial.z);
+                    const targetScale = 3.5 / (maxDim > 0.0001 ? maxDim : 1);
+                    gltfModel.scale.setScalar(targetScale);
+
+                    // 2. update world matrix so the box accounts for scale
+                    gltfModel.updateMatrixWorld(true);
+
+                    // 3. exact geometric center of the scaled model
+                    const boxScaled = new THREE.Box3().setFromObject(gltfModel);
+                    const centerScaled = boxScaled.getCenter(new THREE.Vector3());
+
+                    // 4. recenter model so its center sits at the pivot origin
+                    gltfModel.position.sub(centerScaled);
+
+                    // 5. lower the pivot for a grounded stance
+                    modelPivot.position.y = -0.4;
+                },
+                undefined,
+                (error) => { console.error('Error loading bronze horse model:', error); }
+            );
+        }
+
+        function onWindowResize() {
+            sizes.width = window.innerWidth;
+            sizes.height = window.innerHeight;
+            camera.aspect = sizes.width / sizes.height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(sizes.width, sizes.height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            if (shaderUniforms) shaderUniforms.uResolution.value.set(sizes.width, sizes.height);
+        }
+
+        function splitTitlesIntoChars() {
+            const titles = document.querySelectorAll('.slide-title');
+            titles.forEach(title => {
+                const text = title.innerHTML;
+                let newHTML = '';
+                let delayCounter = 0;
+                const parts = text.split(/(<br\s*\/?>)/i);
+                parts.forEach(part => {
+                    if (part.toLowerCase().startsWith('<br')) {
+                        newHTML += part;
+                    } else {
+                        for (let i = 0; i < part.length; i++) {
+                            if (part[i] === ' ') {
+                                newHTML += ' ';
+                            } else {
+                                newHTML += `<span class="char" style="transition-delay: ${delayCounter * 0.035}s">${part[i]}</span>`;
+                                delayCounter++;
+                            }
+                        }
+                    }
+                });
+                title.innerHTML = newHTML;
+            });
+        }
+
+        function updateGridDots(scroll) {
+            const dots = document.querySelectorAll('.grid-dot');
+            dots.forEach((dot, i) => {
+                const startY = (i * 17) % 80 + 10;
+                let speed = 90 + (i * 55) % 180;
+                if (i % 2 === 0) speed = -speed;
+                let y = startY + scroll * speed;
+                y = ((y % 100) + 100) % 100;
+                dot.style.top = `${y}%`;
+            });
+        }
+
+        function updateSlides(scroll) {
+            const slide1 = document.getElementById('slide-1');
+            const slide2 = document.getElementById('slide-2');
+            const slide3 = document.getElementById('slide-3');
+            const slide4 = document.getElementById('slide-4');
+
+            for (let i = 1; i <= 4; i++) {
+                const fill = document.getElementById(`dash-fill-${i}`);
+                if (fill) {
+                    const start = (i - 1) * 0.25;
+                    const end = i * 0.25;
+                    let progress = (scroll - start) / (end - start);
+                    progress = Math.max(0, Math.min(1, progress));
+                    fill.style.height = `${progress * 100}%`;
+                }
+            }
+
+            function isActive(val, start, end) { return val >= start && val <= end; }
+
+            if (slide1) slide1.classList.toggle('active', isActive(scroll, -0.10, 0.12));
+            if (slide2) {
+                const active2 = isActive(scroll, 0.28, 0.40);
+                slide2.classList.toggle('active', active2);
+                const slide2Img = document.getElementById('slide-2-img');
+                if (slide2Img) slide2Img.classList.toggle('active', active2);
+            }
+            if (slide3) slide3.classList.toggle('active', isActive(scroll, 0.56, 0.68));
+            if (slide4) slide4.classList.toggle('active', isActive(scroll, 0.84, 1.05));
+        }
+
+        function setupNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const targetScrolls = [0.0, 0.34, 0.62, 0.94];
+            navLinks.forEach((link, index) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                    const targetY = maxScroll * targetScrolls[index];
+                    window.scrollTo({ top: targetY, behavior: 'smooth' });
+                });
+            });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const deltaTime = clock.getDelta();
+            if (mixer) mixer.update(deltaTime);
+
+            // 1. target scroll [0..1], cross-browser
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollTop = window.scrollY !== undefined ? window.scrollY
+                : (window.pageYOffset !== undefined ? window.pageYOffset : document.documentElement.scrollTop);
+            const targetScroll = maxScroll > 0 ? scrollTop / maxScroll : 0;
+
+            // smooth physical lerp (inertia)
+            currentScroll += (targetScroll - currentScroll) * 0.025;
+
+            // smooth model rotation lerp
+            mouseX += (targetMouseX - mouseX) * 0.05;
+            mouseY += (targetMouseY - mouseY) * 0.05;
+
+            // outer cursor ring lerps toward inner
+            outerCursorX += (cursorX - outerCursorX) * 0.2;
+            outerCursorY += (cursorY - outerCursorY) * 0.2;
+            const cursorOuter = document.querySelector('.cursor-outer');
+            if (cursorOuter) { cursorOuter.style.left = `${outerCursorX}px`; cursorOuter.style.top = `${outerCursorY}px`; }
+
+            // gentle interactive model tilt from mouse
+            if (modelPivot) {
+                modelPivot.rotation.y = mouseX * 0.25;
+                modelPivot.rotation.x = mouseY * 0.15;
+            }
+
+            // 2. sparks physics, accelerated/turbulent on fast scroll
+            if (sparkParticles) {
+                const positions = sparkParticles.geometry.attributes.position.array;
+                const time = clock.getElapsedTime();
+                const scrollVelocity = Math.abs(targetScroll - currentScroll);
+                const speedMultiplier = 1.0 + scrollVelocity * 9.0;
+                const turbulence = scrollVelocity * 0.8;
+
+                for (let i = 0; i < sparkCount; i++) {
+                    const idx = i * 3;
+                    const data = sparkData[i];
+                    positions[idx]     += data.speedX * deltaTime * speedMultiplier;
+                    positions[idx + 1] += data.speedY * deltaTime * speedMultiplier;
+                    positions[idx + 2] += data.speedZ * deltaTime * speedMultiplier;
+
+                    const currentSway = data.swayRadius * (1.0 + turbulence * 4.0);
+                    positions[idx]     += Math.sin(time * data.swaySpeed + data.phase) * currentSway * deltaTime;
+                    positions[idx + 2] += Math.cos(time * data.swaySpeed + data.phase) * currentSway * deltaTime;
+
+                    // recycle when out of bounds
+                    if (positions[idx + 1] > 3.0 || Math.abs(positions[idx]) > 3.5 || Math.abs(positions[idx + 2]) > 3.5) {
+                        positions[idx + 1] = -2.5;
+                        positions[idx]     = (Math.random() - 0.5) * 3.0;
+                        positions[idx + 2] = (Math.random() - 0.5) * 3.0;
+                    }
+                }
+                sparkParticles.geometry.attributes.position.needsUpdate = true;
+            }
+
+            // 3. camera orbits the model 360° driven by scroll
+            const phi = currentScroll * Math.PI * 2.0;
+            const y = 0.35 + Math.sin(currentScroll * Math.PI) * 0.8;
+            const radius = 4.2 - Math.sin(currentScroll * Math.PI) * 0.6;
+            const x = radius * Math.sin(phi);
+            const z = radius * Math.cos(phi);
+
+            // shift the framing left on the first screen to clear room for the text columns
+            let transitionProgress = Math.min(1.0, currentScroll / 0.28);
+            let easeFactor = (Math.cos(transitionProgress * Math.PI) + 1.0) * 0.5; // 1.0 → 0.0
+            const lookAtXOffset = -0.9 * easeFactor;
+            const targetLookAt = new THREE.Vector3(lookAtXOffset, -0.15, 0);
+            const targetPos = new THREE.Vector3(x, y, z);
+            camera.position.lerp(targetPos, 0.025);
+            camera.lookAt(targetLookAt);
+
+            // background shader uniforms
+            if (shaderUniforms) {
+                shaderUniforms.uTime.value = clock.getElapsedTime();
+                shaderUniforms.uMouse.value.set(mouseX, -mouseY);
+                shaderUniforms.uScroll.value = currentScroll;
+            }
+
+            updateSlides(currentScroll);
+            updateGridDots(currentScroll);
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('mousemove', (event) => {
+            cursorX = event.clientX;
+            cursorY = event.clientY;
+            const cursorInner = document.querySelector('.cursor-inner');
+            if (cursorInner) { cursorInner.style.left = `${cursorX}px`; cursorInner.style.top = `${cursorY}px`; }
+            targetMouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            targetMouseY = (event.clientY / window.innerHeight) * 2 - 1;
+        });
+
+        window.addEventListener('resize', onWindowResize);
+
+        window.addEventListener('DOMContentLoaded', () => {
+            splitTitlesIntoChars();
+
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color('#000000');
+            scene.fog = new THREE.FogExp2('#000000', 0.01);
+
+            camera = new THREE.PerspectiveCamera(50, sizes.width / sizes.height, 0.1, 100);
+            camera.position.set(0, 0.2, 3.0);
+            scene.add(camera);
+
+            createBackgroundShader();
+
+            renderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                antialias: true,
+                alpha: false,
+                powerPreference: "high-performance"
+            });
+            renderer.setSize(sizes.width, sizes.height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 2.2;
+
+            const ambientLight = new THREE.AmbientLight('#ffffff', 0.1);
+            scene.add(ambientLight);
+
+            const keyLight = new THREE.SpotLight('#ffffff', 18.0);
+            keyLight.position.set(4, 6, 3);
+            keyLight.angle = Math.PI / 4;
+            keyLight.penumbra = 0.9;
+            keyLight.castShadow = true;
+            keyLight.shadow.mapSize.width = 2048;
+            keyLight.shadow.mapSize.height = 2048;
+            keyLight.shadow.camera.near = 1.0;
+            keyLight.shadow.camera.far = 15;
+            keyLight.shadow.bias = -0.001;
+            scene.add(keyLight);
+
+            const rimLight = new THREE.DirectionalLight('#e3f2ff', 10.0);
+            rimLight.position.set(-5, 3, -4);
+            scene.add(rimLight);
+
+            const fillLight = new THREE.DirectionalLight('#fff3e6', 0.8);
+            fillLight.position.set(-2, -4, 2);
+            scene.add(fillLight);
+
+            createSparks();
+            loadModel();
+
+            onWindowResize();
+            animate();
+            setupNavigation();
+        });
+    </script>
 </body>
 </html>
