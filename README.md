@@ -26,14 +26,6 @@
 
 ---
 
-## 🛠️ Tech Stack
-
-- **Graphics & 3D**: Three.js (r0.160 via CDN importmap), `GLTFLoader`, WebGL Shaders (GLSL).
-- **Styling & Layout**: Pure Vanilla CSS, Google Fonts (*Italiana*, *Outfit*, *Playfair Display*).
-- **Architecture**: Zero build step, zero bundler, single self-contained `index.html`.
-
----
-
 ## 🔗 Connected Projects & Repositories
 
 | Repository | Description | Status |
