@@ -43,7 +43,7 @@ const server = http.createServer(async (req, res) => {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({
             status: 'online',
-            project: 'Laocoön — Bronze and Time',
+            project: 'Laocoon — Bronze and Time',
             timestamp: new Date().toISOString(),
             uptime: process.uptime()
         }));
@@ -112,7 +112,7 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-    console.log(`\n🏛️  Laocoön — Bronze and Time server running at:`);
+    console.log(`\n🏛️  Laocoon — Bronze and Time server running at:`);
     console.log(`   > Local:   http://localhost:${PORT}/`);
     console.log(`   > Health:  http://localhost:${PORT}/api/health\n`);
 });

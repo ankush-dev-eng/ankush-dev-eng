@@ -4,7 +4,7 @@
 
 ---
 
-# 🗿 Laocoön — Bronze and Time
+# 🗿 Laocoon — Bronze and Time
 
 > An immersive, scroll-driven WebGL landing page built as a single self-contained HTML file. Rendered on a deep-black stage with a glowing, semi-polished bronze horse sculpture, 360° camera orbit, liquid-bronze wave shader background, forge spark particles, and editorial UI.
 

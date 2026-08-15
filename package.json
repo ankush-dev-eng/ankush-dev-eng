@@ -1,7 +1,7 @@
 {
   "name": "laocoon-bronze-and-time",
   "version": "1.0.0",
-  "description": "Laocoön — Bronze and Time: Single-file WebGL 3D luxury scroll experience with Node.js backend server",
+  "description": "Laocoon — Bronze and Time: Single-file WebGL 3D luxury scroll experience with Node.js backend server",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
