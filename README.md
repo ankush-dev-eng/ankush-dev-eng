@@ -17,12 +17,20 @@
 
 ## ✨ Features & Visual Highlights
 
-- **360° Scroll-Driven Camera Orbit**: Smooth mathematical camera trajectory surrounding the bronze horse sculpture across a `900vh` page canvas.
+- **360° Scroll-Driven Camera Orbit**: Smooth mathematical camera trajectory surrounding the bronze horse sculpture across a page canvas.
 - **Custom Liquid-Bronze Wave Shader**: Shader material plane attached to camera space featuring 3D noise-warped waves, metallic crest highlights, and smooth scroll palette migration from molten bronze to deep sapphire blue.
 - **Forge Spark Particles**: 450 point particles with additive blending, procedural radial gradient texture, color split (60% molten orange / 40% icy blue), and scroll-velocity particle physics acceleration.
 - **Chiaroscuro Lighting Rig**: High-intensity SpotKey light with shadow mapping (2048x2048), cool blue directional rim light, and warm cream fill light.
 - **Editorial Typography & Motion**: Heading titles in *Italiana*, body in *Outfit*, per-letter character split with staggered blur-up reveals, clip-path image masks, 5-line vertical grid overlay with drifting dots, and stories-style progress dashes.
 - **Custom Dual-Ring Cursor**: Interactive cursor inner dot and smooth lerping outer ring.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Graphics & 3D**: Three.js (r0.160 via CDN importmap), `GLTFLoader`, WebGL Shaders (GLSL).
+- **Styling & Layout**: Pure Vanilla CSS, Google Fonts (*Italiana*, *Outfit*, *Playfair Display*).
+- **Architecture**: Zero build step, zero bundler, single self-contained `index.html`.
 
 ---
 
