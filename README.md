@@ -86,10 +86,9 @@
 
 <h2>The trail behind the work</h2>
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/heatmap?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=wow&v=wow-heatmap-1&mode=light" />
-  <img src="https://www.gitskins.com/api/section/heatmap?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=wow&v=wow-heatmap-1&mode=dark" width="100%" alt="Ankush Shahu contribution energy field" />
-</picture>
+<a href="https://github.com/ankush-dev-eng">
+<img src="https://www.gitskins.com/api/section/heatmap?username=ankush-dev-eng&theme=github-dark&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fu%3D5c808e098bc11c2a05f14096575f2352dbf90aef%26v%3D4&variant=space-shooter&v=space-jet-original-2&mode=dark" width="100%" alt="ankush-dev-eng animated contribution jet" />
+</a>
 
 <!-- STREAK_START -->
 <p align="center"><sub>1 day current streak · 26 active days</sub></p>
