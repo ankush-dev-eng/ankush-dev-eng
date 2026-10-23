@@ -1,0 +1,56 @@
+﻿name: Auto-Update README Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Update stats
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ankush-dev-eng
+        run: |
+          python - <<'PYEOF'
+          import requests, re, os
+          from datetime import datetime, timezone
+          u = os.environ["USERNAME"]
+          h = {"Authorization": f"Bearer {os.environ['GH_TOKEN']}", "Accept": "application/vnd.github+json"}
+          user = requests.get(f"https://api.github.com/users/{u}", headers=h).json()
+          followers = user.get("followers", 0)
+          pub_repos = user.get("public_repos", 0)
+          stars, page = 0, 1
+          while True:
+              repos = requests.get(f"https://api.github.com/users/{u}/repos", headers=h, params={"per_page":100,"page":page}).json()
+              if not repos: break
+              stars += sum(r.get("stargazers_count",0) for r in repos)
+              page += 1
+          now = datetime.now(timezone.utc)
+          gql = """query($login:String!,$from:DateTime!,$to:DateTime!){user(login:$login){contributionsCollection(from:$from,to:$to){contributionCalendar{totalContributions}}}}"""
+          v = {"login":u,"from":f"{now.year}-01-01T00:00:00Z","to":now.strftime("%Y-%m-%dT%H:%M:%SZ")}
+          contributions = requests.post("https://api.github.com/graphql",headers=h,json={"query":gql,"variables":v}).json()["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+          stats = f"| | |\n|---|---|\n| \U0001f4c1 Repos | **{pub_repos}** |\n| \u2b50 Stars | **{stars}** |\n| \U0001f525 Contributions | **{contributions}** |\n| \U0001f465 Followers | **{followers}** |"
+          with open("README.md","r",encoding="utf-8") as f: content = f.read()
+          content = re.sub(r"<!-- LIVE_STATS_START -->.*?<!-- LIVE_STATS_END -->", f"<!-- LIVE_STATS_START -->\n{stats}\n<!-- LIVE_STATS_END -->", content, flags=re.DOTALL)
+          with open("README.md","w",encoding="utf-8") as f: f.write(content)
+          print(f"Done: repos={pub_repos} stars={stars} contribs={contributions} followers={followers}")
+          PYEOF
+      - name: Commit if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet && echo "No changes." || (git add README.md && git commit -m "chore: auto-update stats [skip ci]" && git push)
