@@ -1,146 +1,110 @@
 ﻿<div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Ankush%20Shahu&fontSize=52&fontColor=ffffff&animation=twinkling&fontAlignY=38&desc=Frontend%20%26%20Full-Stack%20Engineer%20%C2%B7%20Building%20in%20Public&descColor=a8b2d8&descAlignY=58&descSize=17" width="100%" alt="header"/>
+<p><sub>WOW PROFILE · ANKUSH-DEV-ENG · LIVE</sub></p>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=7B68EE&center=true&vCenter=true&width=560&lines=Building+useful+things+in+public.;TypeScript+%C2%B7+Python+%C2%B7+JavaScript;Thoughtful+craft.+Ambitious+products.;Always+shipping+the+useful+version." alt="Typing SVG"/>
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/hero?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=living-identity&label=Ankush%20Shahu&v=wow-living-identity-1&mode=light" />
+  <img src="https://www.gitskins.com/api/section/hero?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=living-identity&label=Ankush%20Shahu&v=wow-living-identity-1&mode=dark" width="100%" alt="Ankush Shahu" />
+</picture>
 
-<br/>
-
-<img src="https://komarev.com/ghpvc/?username=ankush-dev-eng&style=flat-square&color=6e40c9&label=visitors" alt="visitors"/>
-&nbsp;
-<a href="https://github.com/ankush-dev-eng?tab=followers">
-  <img src="https://img.shields.io/github/followers/ankush-dev-eng?style=flat-square&color=6e40c9&labelColor=1a1a2e&label=followers" alt="followers"/>
-</a>
-&nbsp;
-<img src="https://img.shields.io/badge/focus-TypeScript%20%C2%B7%20Python%20%C2%B7%20JavaScript-6e40c9?style=flat-square&labelColor=1a1a2e" alt="focus"/>
+<p><strong>Frontend or full-stack engineer</strong> · the public internet</p>
+<p>Building useful things and sharing the work in public.</p>
+<p><a href="https://github.com/ankush-dev-eng">GitHub</a></p>
 
 </div>
 
-<br/>
+<p align="center"><sub>✦ ───────────────────────────── ✦</sub></p>
 
----
+<h2>Identity, with signal</h2>
 
-<table width="100%">
+<table width="100%" style="display:table;width:100%;table-layout:fixed;">
 <tr>
-<td width="55%" valign="top">
-
-### 👋 Hey, I'm Ankush
-
-I build useful things and ship them in public.
-
-- 🔭 Currently building with **TypeScript** & **Python**
-- 🤖 Exploring **AI-powered** developer and fintech tools
-- 💡 Interested in fraud detection, fintech & ed-tech
-- 🤝 Open to thoughtful collaboration
-- 📍 Based in **India**
-
-</td>
-<td width="45%" valign="top">
-
-### 📊 Live Signal
-
+<td width="62%" valign="top"><p>Building useful things and sharing the work in public.</p><p><strong>Focus:</strong> `TypeScript` · `Python` · `JavaScript`</p><p><sub>Thoughtful collaboration, ambitious products, and useful open source.</sub></p></td>
+<td width="38%" valign="top"><p><code>LIVE SIGNAL</code></p>
 <!-- LIVE_STATS_START -->
-| | |
-|---|---|
-| 📁 Repos | **10** |
-| ⭐ Stars | **10** |
-| 🔥 Contributions | **348** |
-| 👥 Followers | **3** |
+<p><strong>10</strong> repos<br /><strong>10</strong> stars<br /><strong>348</strong> contributions<br /><strong>3</strong> followers</p>
 <!-- LIVE_STATS_END -->
-
-<sub>↑ auto-updated daily via GitHub Actions</sub>
-
 </td>
 </tr>
 </table>
 
----
+<p align="center"><sub>✦ ───────────────────────────── ✦</sub></p>
 
-### 🛠️ Tech Stack
+<h2>What moves the work</h2>
 
-<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/highlights?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&items=TypeScript%3A%3ACurrent%20focus%7CPython%3A%3AIn%20the%20build%20queue%7CJavaScript%3A%3AIn%20the%20build%20queue&variant=wow&v=wow-highlights-1&mode=light" />
+  <img src="https://www.gitskins.com/api/section/highlights?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&items=TypeScript%3A%3ACurrent%20focus%7CPython%3A%3AIn%20the%20build%20queue%7CJavaScript%3A%3AIn%20the%20build%20queue&variant=wow&v=wow-highlights-1&mode=dark" width="100%" alt="Ankush Shahu animated profile highlights" />
+</picture>
 
-<img src="https://skillicons.dev/icons?i=ts,py,js,html,css,react,nextjs,nodejs,tailwind,postgres,git,github,vscode,bash&perline=7&theme=dark" alt="tech stack icons"/>
+<p align="center"><sub>Positioning is useful when the proof is close behind it.</sub></p>
 
-</div>
+<p align="center"><sub>✦ ───────────────────────────── ✦</sub></p>
 
----
+<h2>The tools behind the signal</h2>
 
-### 📈 GitHub Stats
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/stack?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=wow&v=wow-stack-1&mode=light" />
+  <img src="https://www.gitskins.com/api/section/stack?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=wow&v=wow-stack-1&mode=dark" width="100%" alt="Ankush Shahu animated technology stack" />
+</picture>
 
-<div align="center">
+<p align="center"><sub>TypeScript · Python · JavaScript · HTML · CSS · Jupyter Notebook · Shell · PowerShell · chosen for the work, not the trend</sub></p>
 
-<img src="https://github-readme-stats.vercel.app/api?username=ankush-dev-eng&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true&bg_color=0d1117&title_color=7b68ee&icon_color=7b68ee&text_color=cdd6f4&rank_icon=github" height="170" alt="GitHub Stats"/>
-&nbsp;&nbsp;
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ankush-dev-eng&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=7b68ee&text_color=cdd6f4&langs_count=8" height="170" alt="Top Languages"/>
+<p align="center"><sub>✦ ───────────────────────────── ✦</sub></p>
 
-</div>
+<h2>Built, shipped, shared</h2>
 
----
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/projects?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&repos=ankush-dev-eng%2FParallelRC-3D-Lab%2Cankush-dev-eng%2FNiveshRakshak%2Cankush-dev-eng%2Fpakka%2Cankush-dev-eng%2FSnapExplain&variant=wow&v=wow-projects-1&mode=light" />
+  <img src="https://www.gitskins.com/api/section/projects?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&repos=ankush-dev-eng%2FParallelRC-3D-Lab%2Cankush-dev-eng%2FNiveshRakshak%2Cankush-dev-eng%2Fpakka%2Cankush-dev-eng%2FSnapExplain&variant=wow&v=wow-projects-1&mode=dark" width="100%" alt="Ankush Shahu animated project constellation" />
+</picture>
 
-### 🔥 Contribution Streak
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/projects?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&repos=ankush-dev-eng%2FParallelRC-3D-Lab%2Cankush-dev-eng%2FNiveshRakshak%2Cankush-dev-eng%2Fpakka%2Cankush-dev-eng%2FSnapExplain&variant=wow-timeline&v=wow-timeline-1&mode=light" />
+  <img src="https://www.gitskins.com/api/section/projects?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&repos=ankush-dev-eng%2FParallelRC-3D-Lab%2Cankush-dev-eng%2FNiveshRakshak%2Cankush-dev-eng%2Fpakka%2Cankush-dev-eng%2FSnapExplain&variant=wow-timeline&v=wow-timeline-1&mode=dark" width="100%" alt="Ankush Shahu animated project launch timeline" />
+</picture>
 
-<div align="center">
+<table width="100%">
+<tr>
+<td width="25%" valign="top"><p><strong><a href="https://github.com/ankush-dev-eng/ParallelRC-3D-Lab">ParallelRC-3D-Lab</a></strong></p><p>Interactive 3D browser-based virtual laboratory for analyzing phase relationships and current summation in parallel RC circuits.</p><p><sub>JavaScript · ⭐ 2</sub></p></td>
+<td width="25%" valign="top"><p><strong><a href="https://github.com/ankush-dev-eng/NiveshRakshak">NiveshRakshak</a></strong></p><p>AI-powered financial safety platform that analyzes suspicious investment messages, detects red flags, explains claims, and helps users verify before trusting.</p><p><sub>TypeScript · ⭐ 1</sub></p></td>
+<td width="25%" valign="top"><p><strong><a href="https://github.com/ankush-dev-eng/pakka">pakka</a></strong></p><p>AI fraud analyst for every student inbox. Paste, upload or screenshot any job or internship offer and get a Trust Score.</p><p><sub>TypeScript · ⭐ 1</sub></p></td>
+<td width="25%" valign="top"><p><strong><a href="https://github.com/ankush-dev-eng/SnapExplain">SnapExplain</a></strong></p><p>Privacy-first AI study assistant for turning notes and screenshots into simple explanations, summaries, key points, and quizzes.</p><p><sub>HTML · ⭐ 1</sub></p></td>
+</tr>
+</table>
 
-<img src="https://streak-stats.demolab.com?user=ankush-dev-eng&theme=tokyonight&hide_border=true&background=0d1117&ring=7b68ee&fire=ff7b72&currStreakLabel=7b68ee&sideLabels=cdd6f4&sideNums=cdd6f4&dates=8b949e" width="68%" alt="GitHub Streak"/>
+<p align="center"><sub>✦ ───────────────────────────── ✦</sub></p>
 
-</div>
+<h2>Momentum, made visible</h2>
 
----
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/stats?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=wow&v=wow-stats-1&mode=light" />
+  <img src="https://www.gitskins.com/api/section/stats?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=wow&v=wow-stats-1&mode=dark" width="100%" alt="Ankush Shahu animated GitHub signal" />
+</picture>
 
-### 🏆 Trophies
+<p align="center"><sub>✦ ───────────────────────────── ✦</sub></p>
 
-<div align="center">
+<h2>The trail behind the work</h2>
 
-<img src="https://github-profile-trophy.vercel.app/?username=ankush-dev-eng&theme=tokyonight&no-frame=true&no-bg=true&margin-w=8&column=7" width="100%" alt="GitHub Trophies"/>
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/heatmap?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=wow&v=wow-heatmap-1&mode=light" />
+  <img src="https://www.gitskins.com/api/section/heatmap?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=wow&v=wow-heatmap-1&mode=dark" width="100%" alt="Ankush Shahu contribution energy field" />
+</picture>
 
-</div>
+<!-- STREAK_START -->
+<p align="center"><sub>1 day current streak · 26 active days</sub></p>
+<!-- STREAK_END -->
 
----
-
-### 📦 Built · Shipped · Shared
-
-<div align="center">
-
-<a href="https://github.com/ankush-dev-eng/ParallelRC-3D-Lab">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=ankush-dev-eng&repo=ParallelRC-3D-Lab&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=7b68ee&text_color=cdd6f4&icon_color=7b68ee" alt="ParallelRC-3D-Lab"/>
-</a>
-<a href="https://github.com/ankush-dev-eng/NiveshRakshak">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=ankush-dev-eng&repo=NiveshRakshak&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=7b68ee&text_color=cdd6f4&icon_color=7b68ee" alt="NiveshRakshak"/>
-</a>
-<a href="https://github.com/ankush-dev-eng/pakka">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=ankush-dev-eng&repo=pakka&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=7b68ee&text_color=cdd6f4&icon_color=7b68ee" alt="pakka"/>
-</a>
-<a href="https://github.com/ankush-dev-eng/SnapExplain">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=ankush-dev-eng&repo=SnapExplain&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=7b68ee&text_color=cdd6f4&icon_color=7b68ee" alt="SnapExplain"/>
-</a>
-
-</div>
-
----
-
-### 📊 Activity Graph
-
-<div align="center">
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=ankush-dev-eng&bg_color=0d1117&color=7b68ee&line=7b68ee&point=ffffff&area=true&hide_border=true" width="100%" alt="Activity Graph"/>
-
-</div>
-
----
+<p align="center"><sub>✦ ───────────────────────────── ✦</sub></p>
 
 <div align="center">
-
-### 🤝 Make something worth noticing
-
+<p><sub>KEEP THE SIGNAL MOVING</sub></p>
+<h2>Make something worth noticing</h2>
 <p>I like working with people who care about craft, context, and shipping the useful version.</p>
-
-<a href="https://github.com/ankush-dev-eng">
-  <img src="https://img.shields.io/badge/GitHub-ankush--dev--eng-7b68ee?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117" alt="GitHub"/>
-</a>
-
-<br/><br/>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=110&section=footer" width="100%" alt="footer"/>
-
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/social?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=wow&v=wow-social-1&mode=light" />
+  <img src="https://www.gitskins.com/api/section/social?username=ankush-dev-eng&theme=aurora&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F238998372%3Fv%3D4&variant=wow&v=wow-social-1&mode=dark" width="100%" alt="Ankush Shahu contact links" />
+</picture>
+<p><a href="https://github.com/ankush-dev-eng">GitHub</a></p>
+<p><sub>Ankush Shahu</sub></p>
 </div>

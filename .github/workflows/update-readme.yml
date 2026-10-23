@@ -20,12 +20,12 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install requests
-      - name: Update stats
+      - name: Patch README
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ankush-dev-eng
         run: |
-          python - <<'PYEOF'
+          python - <<PYEOF
           import requests, re, os
           from datetime import datetime, timezone
           u = os.environ["USERNAME"]
@@ -40,14 +40,23 @@ jobs:
               stars += sum(r.get("stargazers_count",0) for r in repos)
               page += 1
           now = datetime.now(timezone.utc)
-          gql = """query($login:String!,$from:DateTime!,$to:DateTime!){user(login:$login){contributionsCollection(from:$from,to:$to){contributionCalendar{totalContributions}}}}"""
-          v = {"login":u,"from":f"{now.year}-01-01T00:00:00Z","to":now.strftime("%Y-%m-%dT%H:%M:%SZ")}
-          contributions = requests.post("https://api.github.com/graphql",headers=h,json={"query":gql,"variables":v}).json()["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
-          stats = f"| | |\n|---|---|\n| \U0001f4c1 Repos | **{pub_repos}** |\n| \u2b50 Stars | **{stars}** |\n| \U0001f525 Contributions | **{contributions}** |\n| \U0001f465 Followers | **{followers}** |"
+          gql = "query(\$l:String!,\$f:DateTime!,\$t:DateTime!){user(login:\$l){contributionsCollection(from:\$f,to:\$t){contributionCalendar{totalContributions weeks{contributionDays{contributionCount}}}}}}"
+          v = {"l":u,"f":f"{now.year}-01-01T00:00:00Z","t":now.strftime("%Y-%m-%dT%H:%M:%SZ")}
+          cal = requests.post("https://api.github.com/graphql",headers=h,json={"query":gql,"variables":v}).json()["data"]["user"]["contributionsCollection"]["contributionCalendar"]
+          contributions = cal["totalContributions"]
+          all_days = [d for w in cal["weeks"] for d in w["contributionDays"]]
+          active_days = sum(1 for d in all_days if d["contributionCount"] > 0)
+          streak = 0
+          for d in reversed(all_days):
+              if d["contributionCount"] > 0: streak += 1
+              else: break
           with open("README.md","r",encoding="utf-8") as f: content = f.read()
+          stats = f"<p><strong>{pub_repos}</strong> repos<br /><strong>{stars}</strong> stars<br /><strong>{contributions}</strong> contributions<br /><strong>{followers}</strong> followers</p>"
           content = re.sub(r"<!-- LIVE_STATS_START -->.*?<!-- LIVE_STATS_END -->", f"<!-- LIVE_STATS_START -->\n{stats}\n<!-- LIVE_STATS_END -->", content, flags=re.DOTALL)
+          streak_txt = f"<p align=\"center\"><sub>{streak} day{'s' if streak!=1 else ''} current streak · {active_days} active days</sub></p>"
+          content = re.sub(r"<!-- STREAK_START -->.*?<!-- STREAK_END -->", f"<!-- STREAK_START -->\n{streak_txt}\n<!-- STREAK_END -->", content, flags=re.DOTALL)
           with open("README.md","w",encoding="utf-8") as f: f.write(content)
-          print(f"Done: repos={pub_repos} stars={stars} contribs={contributions} followers={followers}")
+          print(f"Done: repos={pub_repos} stars={stars} contribs={contributions} followers={followers} streak={streak}")
           PYEOF
       - name: Commit if changed
         run: |
