@@ -22,7 +22,7 @@
 <td width="62%" valign="top"><p>Building useful things and sharing the work in public.</p><p><strong>Focus:</strong> `TypeScript` · `Python` · `JavaScript`</p><p><sub>Thoughtful collaboration, ambitious products, and useful open source.</sub></p></td>
 <td width="38%" valign="top"><p><code>LIVE SIGNAL</code></p>
 <!-- LIVE_STATS_START -->
-<p><strong>19</strong> repos<br /><strong>14</strong> stars<br /><strong>616</strong> contributions<br /><strong>3</strong> followers</p>
+<p><strong>22</strong> repos<br /><strong>14</strong> stars<br /><strong>757</strong> contributions<br /><strong>3</strong> followers</p>
 <!-- LIVE_STATS_END -->
 </td>
 </tr>
@@ -91,7 +91,7 @@
 </a>
 
 <!-- STREAK_START -->
-<p align="center"><sub>2 days current streak · 29 active days</sub></p>
+<p align="center"><sub>3 days current streak · 31 active days</sub></p>
 <!-- STREAK_END -->
 
 <p align="center"><sub>✦ ───────────────────────────── ✦</sub></p>
