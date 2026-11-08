@@ -91,7 +91,7 @@
 </a>
 
 <!-- STREAK_START -->
-<p align="center"><sub>4 days current streak · 32 active days</sub></p>
+<p align="center"><sub>0 days current streak · 32 active days</sub></p>
 <!-- STREAK_END -->
 
 <p align="center"><sub>✦ ───────────────────────────── ✦</sub></p>
